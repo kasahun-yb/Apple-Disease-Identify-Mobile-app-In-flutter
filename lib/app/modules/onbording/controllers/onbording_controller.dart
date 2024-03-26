@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnbordingController extends GetxController {
 
@@ -31,6 +32,9 @@ controller.animateToPage(backpageindex,
   }
    
  }
-
+Future<void> saveData() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('onbording', 'End'); // Example of saving a string
+}
 
 }

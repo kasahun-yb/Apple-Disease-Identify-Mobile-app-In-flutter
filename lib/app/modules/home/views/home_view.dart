@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:apple_disease/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,17 +22,18 @@ final _controller=Get.put(HomeController());
 
       //appbar
       appBar: AppBar(
+        leading: null,
         title: const Text('Apple Disease Identification'),
         centerTitle: true,
       ),
 
 
-      body:  Obx(()
+      body: Obx(()
         => Column(
         
           children: [
             
-           Container(
+           SizedBox(
             width:  size.width,
             height: size.width,
             
@@ -41,10 +43,10 @@ final _controller=Get.put(HomeController());
            ),
            const SizedBox(height: 20
            ,),
+           //
             Center(child: CupertinoButton(
                 color: Theme.of(context).colorScheme.primary,
-              
-                child: const Text(
+            child: const Text(
                 "Select Image"
               ), onPressed: (){
             _controller.selectImage(ImageSource.gallery);
@@ -54,10 +56,13 @@ final _controller=Get.put(HomeController());
           const SizedBox(height: 20,),
              Center(child: CupertinoButton(
               disabledColor: Theme.of(context).colorScheme.primaryContainer,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.primary,  onPressed: _controller.imageSelected.value==false?null:()=>{
+                Get.toNamed(Routes.DETAILPAGE)
+                },
                 child: const Text(
                 "Identify Disease"
-              ), onPressed: null),
+              )
+              ),
             ),
           ],
         ),

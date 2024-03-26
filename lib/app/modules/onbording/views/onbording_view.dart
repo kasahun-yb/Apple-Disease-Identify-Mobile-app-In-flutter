@@ -1,3 +1,4 @@
+import 'package:apple_disease/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -58,8 +59,8 @@ class OnbordingView extends GetView<OnbordingController> {
                       maxVisibleDots: 5,
                       radius: 8,
                       spacing: 10,
-                      dotHeight: 12,
-                      dotWidth: 12,
+                      dotHeight: 6,
+                      dotWidth: 6,
                     )),
                 Obx(()=>
                 Padding(
@@ -79,7 +80,7 @@ class OnbordingView extends GetView<OnbordingController> {
                   
                             _onbordeingController. pageChange(_onbordeingController.pageController);
                           }:(){
-                            
+                            Get.toNamed(Routes.HOME);
                           },)
                       ],
                     ),
@@ -109,28 +110,33 @@ class first_onbording_page extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
        children: [
-        const SizedBox(height: 80,),
+        const SizedBox(height: 50,),
         Center(
-          child: Image.asset(
-            'assets/onbording/images.jpg'),
+          child: Image.asset
+          
+          (
+          
+            'assets/onbording/images.jpg'
+            ,width: 150,
+            
+            ),
         ),
-     const SizedBox(height: 20,),
+     const SizedBox(height: 50,),
         const Text("Wellcome to this App",style: TextStyle(fontSize: 19,fontWeight: FontWeight.w700,letterSpacing: 1.4),),
        const SizedBox(height: 20,),
          Padding(
           padding:  const EdgeInsets.symmetric(horizontal: 30),
     
           child: Text("This app working to identify apple leave disease using photo fo lefe and machine learign to detect the diseasethis app working to identify apple leave disease using photo fo lefe and machine learign to detect the disease",
-      textAlign: TextAlign.justify
-      ,style: TextStyle(
-        color: Theme.of(context).colorScheme.onSurfaceVariant,
+    textAlign: TextAlign.justify,
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.tertiary,
         fontWeight: FontWeight.w500,
        wordSpacing: 1.3,
        letterSpacing: 1.1,
        height: 1.8 ),
-    
-         ),
-        ),
+       ),
+       ),
         
       
       

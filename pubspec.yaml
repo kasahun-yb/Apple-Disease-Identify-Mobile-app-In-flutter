@@ -22,5 +22,7 @@ dev_dependencies:
 flutter: 
   assets: 
     - assets/onbording/images.jpg
+    - assets/models/applediseasemodel.tflite
+    - assets/label/apple.txt
   uses-material-design: true
 
