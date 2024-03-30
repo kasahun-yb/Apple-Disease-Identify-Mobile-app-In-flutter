@@ -28,6 +28,9 @@ final ImagePicker picker = ImagePicker();
  catch(e){
     print(e);
  }
+ intialize(){
+  
+ }
 }
 
 

@@ -26,7 +26,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAILPAGE,
-      page: () => const DetailpageView(),
+      page: () =>  DetailpageView(),
       binding: DetailpageBinding(),
     ),
   ];

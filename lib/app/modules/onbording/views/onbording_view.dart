@@ -8,8 +8,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../controllers/onbording_controller.dart';
 
 class OnbordingView extends GetView<OnbordingController> {
-  
-
 
  var _onbordeingController=Get.put(OnbordingController());
   Widget build(BuildContext context) {

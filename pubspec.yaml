@@ -8,8 +8,9 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   smooth_page_indicator: ^1.1.0
+  flutter_tflite: ^1.0.1
   get: 4.6.6
-  image_picker: 1.0.7
+  image_picker: ^0.8.5+3
   shared_preferences: 2.2.2
   flutter: 
     sdk: flutter
@@ -20,9 +21,13 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
+  fonts:
+    - family: MyCustomFont
+      fonts:
+        - asset: assets/fonts/PoppinsRegular.ttf
   assets: 
     - assets/onbording/images.jpg
-    - assets/models/applediseasemodel.tflite
-    - assets/label/apple.txt
+    - assets/models/
+    - assets/label/
   uses-material-design: true
 
