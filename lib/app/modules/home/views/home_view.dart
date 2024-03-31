@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 import 'package:apple_disease/app/routes/app_pages.dart';
@@ -8,9 +9,46 @@ import 'package:image_picker/image_picker.dart';
 
 import '../controllers/home_controller.dart';
 
+
+class AnimationControllere extends GetxController  with GetSingleTickerProviderStateMixin{
+  
+
+ 
+ late AnimationController animationController;
+ late Animation<Offset> offsetAnimation;
+
+  @override
+  void onInit() {
+    super.onInit();
+    animationController =
+        AnimationController(vsync:this, duration: const Duration(milliseconds: 200));
+    offsetAnimation = Tween<Offset>(
+      begin: const Offset(-1, 0.0),
+      end: const Offset(0, 0.0),
+    ).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve: Curves.easeInSine,
+      ),
+    );
+  }
+
+  @override
+  void onClose() {
+    animationController.dispose();
+    super.onClose();
+  }
+}
+
+
 class HomeView extends GetView<HomeController> {
+     HomeView({super.key});
   //the controller of homecontroller 
 final _controller=Get.put(HomeController());
+ final AnimationControllere animationController =
+      Get.put(AnimationControllere());
+
+
   @override
 
 
@@ -36,7 +74,7 @@ child: SafeArea(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(Icons.mobile_friendly),
+        const Icon(Icons.mobile_friendly),
          ProfileMode(Theme.of(context).textTheme.bodyLarge!,) ,
          const SizedBox(height: 10,),
          const Divider(
@@ -74,11 +112,11 @@ child: SafeArea(
 
       body: Obx(()
         => Column(
-        
           children: [
             SizedBox(
             width:  size.width,
             height: size.width,
+            // ignore: unrelated_type_equality_checks
             child: _controller.imagePath!=''? Image.file(
               File(_controller.imagePath.value),fit: BoxFit.cover,):const Center(child: Text("no Image Selected",style: TextStyle(fontSize: 19),)),
            ),
@@ -97,14 +135,58 @@ child: SafeArea(
           const SizedBox(height: 20,),
              Center(child: CupertinoButton(
               disabledColor: Theme.of(context).colorScheme.primaryContainer,
-                color: Theme.of(context).colorScheme.primary,  onPressed: _controller.imageSelected.value==false?null:()=>{
-                Get.toNamed(Routes.DETAILPAGE,arguments: _controller.imagePath.value)
-                },
+                color: Theme.of(context).colorScheme.primary,  onPressed: ()=>{
+
+             
+              if(controller.imageBlur[0]['label']=='blur'){
+               animationController.animationController.forward()
+                 
+               }
+               else{
+               Get.toNamed(Routes.DETAILPAGE,arguments: _controller.imagePath.value),
+               
+               }
+               },
                 child: const Text(
                 "Identify Disease"
               )
               ),
             ),
+           
+          
+       SlideTransition(
+               position: animationController.offsetAnimation,
+               child: GestureDetector(
+                onTap:(){
+                  animationController.animationController.reverse();
+                } ,
+                 child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 10),
+                    margin: const EdgeInsets.only(left: 16,right: 16,top: 70),
+                    width: double.infinity,
+                    height: 120,
+                    decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 141, 13, 13),
+                     borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: const Column(
+                      children: [
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                   Icon(Icons.error_sharp,color: Colors.white, ),
+                   SizedBox(width: 10,),
+                   Text("Warnning",style: TextStyle(color: Colors.white,fontSize: 17,fontWeight: FontWeight.w500),),
+                  
+                   ],),
+                    SizedBox(height: 10,),
+                           Text('The above image you inset is blur. If you  this image the result may be undesirable, so change other image or Recapture again. ',style: TextStyle(color: Color.fromARGB(255, 204, 201, 201)),)
+                      ],
+                    ),
+                  ),
+               ),
+             )
+  
           ],
         ),
       ),

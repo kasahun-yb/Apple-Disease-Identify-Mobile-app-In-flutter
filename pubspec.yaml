@@ -27,7 +27,9 @@ flutter:
         - asset: assets/fonts/PoppinsRegular.ttf
   assets: 
     - assets/onbording/images.jpg
-    - assets/models/
-    - assets/label/
+    - assets/models/blurmodel.tflite
+    - assets/models/applediseasemodel.tflite
+    - assets/label/apple.txt
+    - assets/label/blur.txt
   uses-material-design: true
 

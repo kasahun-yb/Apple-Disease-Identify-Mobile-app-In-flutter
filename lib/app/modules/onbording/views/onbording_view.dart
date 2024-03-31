@@ -7,9 +7,13 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../controllers/onbording_controller.dart';
 
+// ignore: must_be_immutable
 class OnbordingView extends GetView<OnbordingController> {
 
- var _onbordeingController=Get.put(OnbordingController());
+ final _onbordeingController=Get.put(OnbordingController());
+
+  OnbordingView({super.key});
+  @override
   Widget build(BuildContext context) {
      
    var size=   MediaQuery.of(context).size;
@@ -68,18 +72,17 @@ class OnbordingView extends GetView<OnbordingController> {
                       children: [
                         CupertinoButton(
                           
-                          child: _onbordeingController.pageindex.value==0? Text("Skip"):Text("Back"), onPressed: (){
+                          child: _onbordeingController.pageindex.value==0? const Text("Skip"):const Text("Back"), onPressed: (){
                           _onbordeingController. backChange(_onbordeingController.pageController);
                           }),
 
                         CupertinoButton(
-                          color: Theme.of(context).colorScheme.primary,
-                          child: _onbordeingController.pageindex==3?Text("Start"): Text("Next"), onPressed:_onbordeingController.pageindex!=3? (){
-                  
-                            _onbordeingController. pageChange(_onbordeingController.pageController);
-                          }:(){
+                          // ignore: unrelated_type_equality_checks
+                          color: Theme.of(context).colorScheme.primary, onPressed:_onbordeingController.pageindex!=3? ()=> _onbordeingController. pageChange(_onbordeingController.pageController):(){
                             Get.toNamed(Routes.HOME);
-                          },)
+                          },
+                          // ignore: unrelated_type_equality_checks
+                          child: _onbordeingController.pageindex==3?const Text("Start"): const Text("Next"),)
                       ],
                     ),
                   ),
@@ -95,9 +98,10 @@ class OnbordingView extends GetView<OnbordingController> {
 
 
  void pagechange(PageController controller,int index){
-  controller.animateToPage(index, duration: Duration(milliseconds: 500 ), curve:Curves.easeInToLinear );
+  controller.animateToPage(index, duration: const Duration(milliseconds: 500 ), curve:Curves.easeInToLinear );
  }
 
+// ignore: camel_case_types
 class first_onbording_page extends StatelessWidget {
   const first_onbording_page({
     super.key,

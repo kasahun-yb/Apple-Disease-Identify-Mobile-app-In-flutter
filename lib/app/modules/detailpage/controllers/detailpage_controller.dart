@@ -28,15 +28,15 @@ ModelInit() async{
 // ignore: non_constant_identifier_names
 Identifydisease( String photopath) async{
  recognitions.value = (await Tflite.runModelOnImage(
-  path: photopath,   // required
-  imageMean: 0.0,   // defaults to 117.0
-  imageStd: 255.0,  // defaults to 1.0
-  numResults: 2,    // defaults to 5
-  threshold: 0.2,   // defaults to 0.1
-  asynch: true      // defaults to true
+  path: photopath, 
+  imageMean: 0.0,  
+  imageStd: 255.0,  
+  numResults: 2,  
+  threshold: 0.2,  
+  asynch: true     
 ))!;
 
-print(recognitions[0]['label']);
+// print(recognitions[0]['label']);
 
        }
 

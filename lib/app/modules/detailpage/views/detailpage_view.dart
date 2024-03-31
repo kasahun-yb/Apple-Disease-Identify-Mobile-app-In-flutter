@@ -10,7 +10,7 @@ import '../controllers/detailpage_controller.dart';
 // ignore: must_be_immutable
 class DetailpageView extends GetView<DetailpageController> {
 
-  var _controller=Get.put(DetailpageController());
+  final _controller=Get.put(DetailpageController());
 
 
   DetailpageView({super.key});
@@ -42,14 +42,14 @@ class DetailpageView extends GetView<DetailpageController> {
                           top: 50,
                           left: 16,
                           child: Container(
-                            padding: EdgeInsets.only(left: 5),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.only(left: 5),
+                            decoration: const BoxDecoration(
                                 color: Colors.white,
                               shape: BoxShape.circle),
                             width: 40,
                             height: 40,
          
-                            child: Center(child: IconButton(icon:Icon(Icons.arrow_back_ios ,color: Colors.black,),onPressed: ()=>{
+                            child: Center(child: IconButton(icon:const Icon(Icons.arrow_back_ios ,color: Colors.black,),onPressed: ()=>{
                               Get.back()
                             },))))
                 ],
