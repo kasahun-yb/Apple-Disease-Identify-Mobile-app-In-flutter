@@ -30,7 +30,6 @@ class OnbordingView extends GetView<OnbordingController> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-          
             SizedBox(
               width: size.width,
               height: size.width*1.6,
@@ -79,6 +78,7 @@ class OnbordingView extends GetView<OnbordingController> {
                         CupertinoButton(
                           // ignore: unrelated_type_equality_checks
                           color: Theme.of(context).colorScheme.primary, onPressed:_onbordeingController.pageindex!=3? ()=> _onbordeingController. pageChange(_onbordeingController.pageController):(){
+                            _onbordeingController.saveData();
                             Get.toNamed(Routes.HOME);
                           },
                           // ignore: unrelated_type_equality_checks

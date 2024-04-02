@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+
+import '../modules/Auth/bindings/auth_binding.dart';
+import '../modules/Auth/views/auth_view.dart';
 import '../modules/detailpage/bindings/detailpage_binding.dart';
 import '../modules/detailpage/views/detailpage_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -27,8 +30,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAILPAGE,
-      page: () =>  DetailpageView(),
+      page: () => DetailpageView(),
       binding: DetailpageBinding(),
+    ),
+    GetPage(
+      name: _Paths.AUTH,
+      page: () => const AuthView(),
+      binding: AuthBinding(),
     ),
   ];
 }

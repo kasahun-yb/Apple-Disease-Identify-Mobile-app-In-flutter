@@ -67,7 +67,7 @@ final _controller=Get.put(HomeController());
         title: const Text('Apple Disease Identification'),
         centerTitle: true,
       ),
-drawer: Drawer(
+drawer:Drawer(
 child: SafeArea(
   child: Padding(
     padding: const EdgeInsets.only(left:16.0 ,top:20),
@@ -100,7 +100,10 @@ child: SafeArea(
          const Divider(
           color: Color.fromARGB(10, 0, 0, 0),
          ),
-         const ListTile(
+          ListTile(
+          onTap: ()=>{
+          Get.toNamed(Routes.AUTH)
+          },
           leading: Icon(Icons.lock),
           title: Text("Login"),
          ),
@@ -108,7 +111,10 @@ child: SafeArea(
     ),
   ),
 ),
-),
+) ,
+
+
+
 
       body: Obx(()
         => Column(
@@ -140,11 +146,9 @@ child: SafeArea(
              
               if(controller.imageBlur[0]['label']=='blur'){
                animationController.animationController.forward()
-                 
                }
                else{
                Get.toNamed(Routes.DETAILPAGE,arguments: _controller.imagePath.value),
-               
                }
                },
                 child: const Text(

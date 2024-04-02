@@ -12,8 +12,11 @@ dependencies:
   get: 4.6.6
   image_picker: ^0.8.5+3
   shared_preferences: 2.2.2
+  supabase_flutter: 2.3.4
+  loading_animation_widget: ^1.2.1
   flutter: 
     sdk: flutter
+  http: ^1.2.0
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
@@ -21,9 +24,9 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
-  fonts:
+  fonts: 
     - family: MyCustomFont
-      fonts:
+      fonts: 
         - asset: assets/fonts/PoppinsRegular.ttf
   assets: 
     - assets/onbording/images.jpg
